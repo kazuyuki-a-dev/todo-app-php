@@ -1,7 +1,6 @@
 <?php
-// 後でここに functions.php を require して
-// TODOリストを $todos に読み込む処理を追加します
-$todos = []; // 仮の空配列(あとで実データに置き換え)
+require_once __DIR__ . '/functions.php';
+$todos = loadTodos();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
