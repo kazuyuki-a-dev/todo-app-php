@@ -39,7 +39,7 @@ function deleteTodo(string $id): void
 {
     $todos = loadTodos();
     $todos = array_filter($todos, function ($todo) use ($id) {
-        return $todo['$id'] !== $id;
+        return $todo['id'] !== $id;
     });
 
     $todos = array_values($todos);
