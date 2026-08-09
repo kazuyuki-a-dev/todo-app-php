@@ -46,3 +46,15 @@ function deleteTodo(string $id): void
 
     saveTodos($todos);
 }
+
+function updateTodo(string $id, string $newText): void
+{
+    $todos = loadTodos();
+
+    foreach ($todos as $key => $todo) {
+        if ($todo['id'] === $id) {
+            $todos[$key]['text'] = $newText;
+        }
+    }
+    saveTodos($todos);
+}
