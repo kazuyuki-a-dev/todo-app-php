@@ -29,6 +29,7 @@ $todos = loadTodos();
                 <?php foreach ($todos as $todo): ?>
                     <li>
                         <?php echo htmlspecialchars($todo['text']); ?>
+                        <a href="edit.php?id=<?php echo htmlspecialchars($todo['id']); ?>">編集</a>
                         <form action="delete.php" method="post" class="delete-form">
                             <input type="hidden" name="id" value="<?php echo htmlspecialchars($todo['id']); ?>">
                             <button type="submit">削除</button>
