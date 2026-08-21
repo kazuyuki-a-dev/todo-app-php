@@ -58,3 +58,16 @@ function updateTodo(string $id, string $newText): void
     }
     saveTodos($todos);
 }
+
+function validateTodoText(string $text): string
+{
+    if (trim($text) === '') {
+        return 'TODOを入力してください';
+    }
+
+    if (mb_strlen($text) > 100) {
+        return 'TODOは100文字以内で入力してください';
+    }
+
+    return '';
+}
