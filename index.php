@@ -1,6 +1,9 @@
 <?php
+session_start();
 require_once __DIR__ . '/functions.php';
 $todos = loadTodos();
+$error = $_SESSION['error'] ?? '';
+unset($_SESSION['error']);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -14,10 +17,12 @@ $todos = loadTodos();
 <body>
     <div class="container">
         <h1>TODOリスト</h1>
-
+        <?php if ($error !== ''): ?>
+            <p class="error-message"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
         <!-- 入力フォーム -->
         <form action="add.php" method="post">
-            <input type="text" name="todo_text" placeholder="新しいTODOを入力" required>
+            <input type="text" name="todo_text" placeholder="新しいTODOを入力">
             <button type="submit">追加</button>
         </form>
 
