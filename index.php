@@ -28,12 +28,14 @@ $todos = loadTodos();
             <?php else: ?>
                 <?php foreach ($todos as $todo): ?>
                     <li>
-                        <?php echo htmlspecialchars($todo['text']); ?>
-                        <a href="edit.php?id=<?php echo htmlspecialchars($todo['id']); ?>">編集</a>
-                        <form action="delete.php" method="post" class="delete-form">
-                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($todo['id']); ?>">
-                            <button type="submit">削除</button>
-                        </form>
+                        <span class="todo-text"><?php echo htmlspecialchars($todo['text']); ?></span>
+                        <div class="todo-actions">
+                            <a href="edit.php?id=<?php echo htmlspecialchars($todo['id']); ?>">編集</a>
+                            <form action="delete.php" method="post" class="delete-form">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($todo['id']); ?>">
+                                <button type="submit">削除</button>
+                            </form>
+                        </div>
                     </li>
                 <?php endforeach; ?>
             <?php endif; ?>
