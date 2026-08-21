@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/functions.php';
 
 $id = $_GET['id'] ?? '';
@@ -17,6 +17,9 @@ if ($targetTodo === null) {
     header('Location: index.php');
     exit;
 }
+
+$error = $_SESSION['error'] ?? '';
+unset($_SESSION['error']);
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +34,9 @@ if ($targetTodo === null) {
 <body>
     <div class="container">
         <h1>TODOを編集</h1>
-
+        <?php if ($error !== ''): ?>
+            <p class="error-message"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
         <form action="update.php" method="post">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($targetTodo['id']); ?>">
             <input type="text" name="todo_text" value="<?php echo htmlspecialchars($targetTodo['text']); ?>" required>
