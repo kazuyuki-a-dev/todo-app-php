@@ -1,0 +1,181 @@
+/* 全体のリセット・基本設定 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* コンテナ(カード全体) */
+.container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* 入力フォーム */
+form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+/* 編集フォームなど、単体で使われるinputは幅いっぱいに */
+form:has(button):not(.delete-form) input[type="text"] {
+  flex: 1;
+}
+
+input[type="text"] {
+  padding: 10px 12px;
+  border: 1px solid #dcdfe3;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4a90e2;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+button:hover {
+  background-color: #3a7bc8;
+}
+
+/* 一覧 */
+.todo-list {
+  list-style: none;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 8px;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.todo-list li:last-child {
+  border-bottom: none;
+}
+
+.todo-list li.empty {
+  justify-content: center;
+  color: #999;
+  padding: 24px 0;
+}
+
+.todo-list li span,
+.todo-list li {
+  font-size: 15px;
+}
+
+/* TODOのテキスト部分 */
+.todo-text {
+  flex: 1;
+  word-break: break-all;
+}
+
+/* 編集・削除ボタンをまとめるエリア */
+.todo-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 編集リンク・削除ボタンの高さと余白を揃える */
+.todo-actions a,
+.delete-form button {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  line-height: 1;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.todo-actions a {
+  background-color: #eaf2fc;
+  color: #4a90e2;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.todo-actions a:hover {
+  opacity: 1;
+}
+
+/* 削除フォーム・削除ボタン(控えめな見た目に) */
+.delete-form {
+  margin: 0;
+  display: inline;
+}
+
+.delete-form button {
+  background-color: #fdecea;
+  color: #c0392b;
+  padding: 4px 8px;
+  font-size: 13px;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.delete-form button:hover {
+  opacity: 1;
+}
+
+/* edit.php用:一覧に戻るリンク */
+.container > a {
+  display: inline-block;
+  margin-top: 16px;
+  color: #666;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.container > a:hover {
+  text-decoration: underline;
+}
+
+/* スマホ対応 */
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+}
